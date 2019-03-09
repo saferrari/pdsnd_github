@@ -40,9 +40,9 @@ def get_filters():
     if month_day.lower() == 'month': 
         while True:
             month = input("\nWhich month - January, February, March, April, May, or June? ")
-            month = month.lower()
+            month = month.title()
             day = 'all'
-            if month not in ('january', 'february', 'march', 'april', 'may', 'june'):
+            if month not in ('January', 'February', 'March', 'April', 'May', 'June'):
                 print("\nSorry your response was not valid. Please type January, February, March, April, May or June")
             else:
                 break
@@ -88,7 +88,7 @@ def load_data(city, month, day):
     
     # filters by month if applicable
     if month != 'all':
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
+        months = ['January', 'February', 'March', 'April', 'May', 'June']
         month = months.index(month) + 1
         df = df[df['month'] == month]
         
