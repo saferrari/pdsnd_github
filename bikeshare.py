@@ -18,17 +18,21 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+    
     while True: 
         city = input("\nWould you like to see data for Chicago, New York City, or Washington? ")
         city = city.lower()
+        
         if city not in ('chicago', 'new york city', 'washington'):
             print("\nSorry your response was not valid. Please type Chicago, New York City, or Washington")
         else:
             break
 
     month_day = input("\nWould you like to filter the data by month, day, or not at all? If not at all please type none. ")
+    
     # Checks to see if response if valid, if it is not, the user is asked to type either month, day, or none. Repeats until the user types a valid response.
     while True:
+        
         if month_day.lower() not in ('month', 'day', 'none'):
             print("\nSorry your response was not valid. Pleae type month, day or none")
             month_day = input("\nWould you like to filter the data by month, day, or not at all? If not at all please type none. ")
@@ -38,24 +42,30 @@ def get_filters():
 
     # If fitering by month, asks for the month, and checks if the response is valid.              
     if month_day.lower() == 'month': 
+        
         while True:
             month = input("\nWhich month - January, February, March, April, May, or June? ")
             month = month.title()
             day = 'all'
+            
             if month not in ('January', 'February', 'March', 'April', 'May', 'June'):
                 print("\nSorry your response was not valid. Please type January, February, March, April, May or June")
             else:
                 break
+   
     # If filtering by day, asks for the day of the week and checks if the response is valid.
     elif month_day.lower() == 'day':
+        
         while True:
             day = input("\nWhich day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ")
             day = day.title()
             month = 'all'
+            
             if day not in ('Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'):
                 print("\nSorry your repsonse was not valid. Please select Monday, Tuesday, Wednesday, Thrusday, Friday, Saturday, or Sunday")
             else:
                 break
+    
     # Selects all data if no filter is applied
     elif month_day.lower() == 'none':
         month = 'all'
