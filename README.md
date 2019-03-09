@@ -5,7 +5,7 @@ March 9, 2019
 Bikeshare Statistics
 
 ### Description
-Describe what your project is about and what it does
+Provides an interactive environment which calculates statistics from bike share data. The user selects the city from which the data was collected (Chicago, New York City, or Washington) and then determines how the data is filtered based on a series of questions.
 
 ### Files used
 Include the files used
