@@ -56,8 +56,7 @@ def get_filters():
     elif month_day.lower() == 'day':
         
         while True:
-            day = input("\nWhich day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ")
-            day = day.title()
+            day = input("\nWhich day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ").title()
             month = 'all'
             
             if day not in ('Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'):
@@ -98,7 +97,6 @@ def load_data(city, month, day):
     # filters by month if applicable
     if month != 'all':
         month = ['January', 'February', 'March', 'April', 'May', 'June'].index(month) + 1
-        #month = months.index(month) + 1
         df = df[df['month'] == month]
         
     if day != 'all':
