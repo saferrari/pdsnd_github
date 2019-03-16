@@ -18,17 +18,21 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+    
     while True: 
         city = input("\nWould you like to see data for Chicago, New York City, or Washington? ")
         city = city.lower()
+        
         if city not in ('chicago', 'new york city', 'washington'):
             print("\nSorry your response was not valid. Please type Chicago, New York City, or Washington")
         else:
             break
 
     month_day = input("\nWould you like to filter the data by month, day, or not at all? If not at all please type none. ")
+    
     # Checks to see if response if valid, if it is not, the user is asked to type either month, day, or none. Repeats until the user types a valid response.
     while True:
+        
         if month_day.lower() not in ('month', 'day', 'none'):
             print("\nSorry your response was not valid. Pleae type month, day or none")
             month_day = input("\nWould you like to filter the data by month, day, or not at all? If not at all please type none. ")
@@ -38,24 +42,28 @@ def get_filters():
 
     # If fitering by month, asks for the month, and checks if the response is valid.              
     if month_day.lower() == 'month': 
+        
         while True:
             month = input("\nWhich month - January, February, March, April, May, or June? ")
-            month = month.lower()
+            month = month.title()
             day = 'all'
-            if month not in ('january', 'february', 'march', 'april', 'may', 'june'):
+            
+            if month not in ('January', 'February', 'March', 'April', 'May', 'June'):
                 print("\nSorry your response was not valid. Please type January, February, March, April, May or June")
             else:
                 break
     # If filtering by day, asks for the day of the week and checks if the response is valid.
     elif month_day.lower() == 'day':
+        
         while True:
-            day = input("\nWhich day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ")
-            day = day.title()
+            day = input("\nWhich day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ").title()
             month = 'all'
+            
             if day not in ('Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'):
                 print("\nSorry your repsonse was not valid. Please select Monday, Tuesday, Wednesday, Thrusday, Friday, Saturday, or Sunday")
             else:
                 break
+    
     # Selects all data if no filter is applied
     elif month_day.lower() == 'none':
         month = 'all'
@@ -88,8 +96,7 @@ def load_data(city, month, day):
     
     # filters by month if applicable
     if month != 'all':
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
+        month = ['January', 'February', 'March', 'April', 'May', 'June'].index(month) + 1
         df = df[df['month'] == month]
         
     if day != 'all':
@@ -201,7 +208,7 @@ def user_stats(df):
     print('-'*40)
 
 
-def data(df,i,j):
+def raw_data(df,i,j):
     """
     Prints 5 rows of raw data at a time, until the user tells it to stop
 
@@ -211,15 +218,18 @@ def data(df,i,j):
         (int) j - ending row number  
     """
     raw_data = input('\nWould you like to see 5 lines of raw data? Type yes or no.\n')
+    
     while True:  
         if raw_data.lower() == 'no':
             break
+        
         if raw_data.lower() == 'yes':
             if j > df.shape[0] and i <= df.shape[0]:
                 final_lines = df.loc[i:]
                 print(final_lines)
                 print('\nThere is no more data')
                 break
+            
             elif j <= df.shape[0]:
                 line = df.loc[i:j]
                 print(line)
@@ -228,8 +238,10 @@ def data(df,i,j):
                 if i >= df.shape[0]:
                     print('\nThere is no more data')
                     break
+                
                 raw_data = input('\nWould you like to see 5 more lines of raw data? Type yes or no.\n')
                 continue
+        
         if raw_data.lower not in ('yes', 'no'):
             raw_data = input('Sorry your response was not valid. Please type yes or no. ')
             
@@ -245,11 +257,11 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        # Inputs used for the data fucntion.
+        # Inputs used for the raw_data fucntion.
         df = df.reset_index(drop=True) #resets the index of df 
         i = 0  # stating row number
         j = 4 # ending row number
-        data(df,i,j)
+        raw_data(df,i,j)
               
         # restarts the propgram if user answers yes.
         restart = input('\nWould you like to restart? Type yes or no.\n')
