@@ -52,7 +52,6 @@ def get_filters():
                 print("\nSorry your response was not valid. Please type January, February, March, April, May or June")
             else:
                 break
-   
     # If filtering by day, asks for the day of the week and checks if the response is valid.
     elif month_day.lower() == 'day':
         
@@ -204,7 +203,7 @@ def user_stats(df):
     print('-'*40)
 
 
-def data(df,i,j):
+def raw_data(df,i,j):
     """
     Prints 5 rows of raw data at a time, until the user tells it to stop
 
@@ -248,11 +247,11 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        # Inputs used for the data fucntion.
+        # Inputs used for the raw_data fucntion.
         df = df.reset_index(drop=True) #resets the index of df 
         i = 0  # stating row number
         j = 4 # ending row number
-        data(df,i,j)
+        raw_data(df,i,j)
               
         # restarts the propgram if user answers yes.
         restart = input('\nWould you like to restart? Type yes or no.\n')
