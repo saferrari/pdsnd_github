@@ -97,8 +97,8 @@ def load_data(city, month, day):
     
     # filters by month if applicable
     if month != 'all':
-        months = ['January', 'February', 'March', 'April', 'May', 'June']
-        month = months.index(month) + 1
+        month = ['January', 'February', 'March', 'April', 'May', 'June'].index(month) + 1
+        #month = months.index(month) + 1
         df = df[df['month'] == month]
         
     if day != 'all':
