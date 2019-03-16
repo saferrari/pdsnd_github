@@ -213,15 +213,18 @@ def raw_data(df,i,j):
         (int) j - ending row number  
     """
     raw_data = input('\nWould you like to see 5 lines of raw data? Type yes or no.\n')
+    
     while True:  
         if raw_data.lower() == 'no':
             break
+        
         if raw_data.lower() == 'yes':
             if j > df.shape[0] and i <= df.shape[0]:
                 final_lines = df.loc[i:]
                 print(final_lines)
                 print('\nThere is no more data')
                 break
+            
             elif j <= df.shape[0]:
                 line = df.loc[i:j]
                 print(line)
@@ -230,8 +233,10 @@ def raw_data(df,i,j):
                 if i >= df.shape[0]:
                     print('\nThere is no more data')
                     break
+                
                 raw_data = input('\nWould you like to see 5 more lines of raw data? Type yes or no.\n')
                 continue
+        
         if raw_data.lower not in ('yes', 'no'):
             raw_data = input('Sorry your response was not valid. Please type yes or no. ')
             
